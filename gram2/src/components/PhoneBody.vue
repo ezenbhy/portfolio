@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import VuegramPost from "./VuegramPost";
-import FilterType from "./FilterType";
+import VuegramPost from './VuegramPost'
+import FilterType from './FilterType'
 
 export default {
-  name: "PhoneBody",
+  name: 'PhoneBody',
   props: {
     step: Number,
     posts: Array,
@@ -52,10 +52,10 @@ export default {
     value: String
   },
   components: {
-    "vuegram-post": VuegramPost,
-    "filter-type": FilterType
+    'vuegram-post': VuegramPost,
+    'filter-type': FilterType
   }
-};
+}
 </script>
 
 <style lang="scss" src="../styles/phone-body.scss">

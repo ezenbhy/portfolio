@@ -28,17 +28,17 @@
 
 <script>
 export default {
-  name: "VuegramPost",
+  name: 'VuegramPost',
   props: {
     post: Object
   },
   methods: {
-    like() {
-      this.post.hasBeenLiked ? this.post.likes-- : this.post.likes++;
-      this.post.hasBeenLiked = !this.post.hasBeenLiked;
+    like () {
+      this.post.hasBeenLiked ? this.post.likes-- : this.post.likes++
+      this.post.hasBeenLiked = !this.post.hasBeenLiked
     }
   }
-};
+}
 </script>
 
 <style lang="scss" src="../styles/vuegram-post.scss">

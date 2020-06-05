@@ -3,9 +3,7 @@
     <div class="app-phone">
       <div class="phone-header">
         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/vue_gram_logo_cp.png" />
-        <a class="cancel-cta"
-           v-if="step === 2 || step === 3" 
-           @click="goToHome">
+        <a class="cancel-cta" v-if="step === 2 || step === 3" @click="goToHome">
             Cancel
         </a>
         <a class="next-cta"
@@ -49,71 +47,71 @@
 </template>
 
 <script>
-import PhoneBody from "./components/PhoneBody";
+import PhoneBody from './components/PhoneBody'
 
-import posts from "./data/posts";
-import filters from "./data/filters";
+import posts from './data/posts'
+import filters from './data/filters'
 
-import EventBus from "./event-bus.js";
+import EventBus from './event-bus.js'
 
 export default {
-  name: "App",
-  data() {
+  name: 'App',
+  data () {
     return {
       step: 1,
       posts,
       filters,
-      image: "",
-      selectedFilter: "",
-      caption: ""
-    };
+      image: '',
+      selectedFilter: '',
+      caption: ''
+    }
   },
-  created() {
-    EventBus.$on("filter-selected", evt => {
-      this.selectedFilter = evt.filter;
-    });
+  created () {
+    EventBus.$on('filter-selected', evt => {
+      this.selectedFilter = evt.filter
+    })
   },
   methods: {
-    uploadImage(evt) {
-      const files = evt.target.files;
-      if (!files.length) return;
+    uploadImage (evt) {
+      const files = evt.target.files
+      if (!files.length) return
 
-      const reader = new FileReader();
-      reader.readAsDataURL(files[0]);
+      const reader = new FileReader()
+      reader.readAsDataURL(files[0])
       reader.onload = evt => {
-        this.image = evt.target.result;
-        this.step = 2;
-      };
+        this.image = evt.target.result
+        this.step = 2
+      }
 
       // To enable reuploading of same files in Chrome
-      document.querySelector("#file").value = "";
+      document.querySelector('#file').value = ''
     },
-    sharePost() {
+    sharePost () {
       const post = {
-        username: "fullstack_vue",
+        username: 'fullstack_vue',
         userImage:
-          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/vue_lg_bg.png",
+          'https://s3-us-west-2.amazonaws.com/s.cdpn.io/1211695/vue_lg_bg.png',
         postImage: this.image,
         likes: 0,
         caption: this.caption,
         filter: this.selectedFilter
-      };
-      this.posts.unshift(post);
-      this.goToHome();
+      }
+      this.posts.unshift(post)
+      this.goToHome()
     },
-    goToHome() {
-      this.image = "";
-      this.selectedFilter = "";
-      this.caption = "";
-      this.step = 1;
+    goToHome () {
+      this.image = ''
+      this.selectedFilter = ''
+      this.caption = ''
+      this.step = 1
     }
   },
   components: {
-    "phone-body": PhoneBody
+    'phone-body': PhoneBody
   }
-};
+}
 </script>
 
-<style lang="scss" src="./styles/app.scss">
+<style lang="scss"  src="./styles/app.scss">
 
 </style>
